@@ -15,7 +15,11 @@ const ListUser =()=>{
                 dispatch({type:"users", value: res.data})
             }); 
       };
-
+    
+    const {users} = useSelector((state)=>state);
+    console.log(users)
+    
+      
     useEffect(()=>{
         // UserService.getUser().then((res)=>{
         //     // console.log(res.data);
@@ -24,12 +28,10 @@ const ListUser =()=>{
         getUserData();
     },[]);
 
-    const {users} = useSelector((state)=>state);
-    console.log(users)
-    
     const deleteUserHandler= (id)=>{
        console.log(id);
        UserService.deleteUser(id).then((res)=>{
+           getUserData()
            navigate("/list");
        });
     };

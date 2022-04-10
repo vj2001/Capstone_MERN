@@ -10,6 +10,13 @@ class UserService {
     }
 
     //----------------------------------------
+
+    async getUserById(id){
+        return await User.find({isDel: false, _id: id}).select(["-salt", "-hash"])
+    }
+
+    //----------------------------------------
+
     async setUser(user){
         
         if(user["_id"] !== undefined){

@@ -25,9 +25,13 @@ class UserService{
         return axios.get(USER_BASE_URL,{headers:headers})
     }
 
-    postUser(users){
+    searchUser(id){
+        console.log(headers)
+        return axios.get(USER_BASE_URL+"/"+id,{headers:headers})
+    }
+    postUser(user){
         console.log(headers);
-        return axios.post(USER_BASE_URL, users, {headers:headers})
+        return axios.post(USER_BASE_URL, user, {headers:headers})
     }
 
     deleteUser(id){

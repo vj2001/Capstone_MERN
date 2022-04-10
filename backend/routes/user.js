@@ -12,6 +12,11 @@ router.get("/", auth.required, async (req,res)=>{
     res.send(result);
 })
 
+router.get("/:id", auth.required, async (req,res)=>{
+    const result = await userServiceObj.getUserById(req.params.id);
+     res.send(result);
+ })
+
 router.post("/", auth.required, async (req,res)=>{
     const result = await userServiceObj.setUser(req.body);
     res.send(result);
